@@ -1,12 +1,13 @@
 import sys
 
 from settings import Settings
+from ship import Ship
 
 import pygame
 
 
 class AlienInvasion:
-    """ Клас для управління ресурсами і поводженням гри """
+    """ Клас для управління ресурсами й поводженням гри """
 
     def __init__(self):
         """ Ініціалізує гру і створює ігрові ресурси """
@@ -18,6 +19,8 @@ class AlienInvasion:
         )
         pygame.display.set_caption('Alien Invasion')
 
+        self.ship = Ship(self)
+
     def run_game(self):
         # Запуск основного циклу гри
         while True:
@@ -26,6 +29,7 @@ class AlienInvasion:
                     sys.exit()
 
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
 
             pygame.display.flip()
 
